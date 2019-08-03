@@ -17,6 +17,11 @@
         padding: 0;
       }
     </style>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+
   </head>
   <body>
     <div id="map"></div>
@@ -82,5 +87,16 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap">
     </script>
+    <script>
+    var queryURL = "https://www.worldtides.info/api?heights&lat=33.768321&lon=-118.195617&key=3829b936-6058-47fd-89e8-5853c311d142";
+       $.ajax({
+           url: queryURL,
+           method: "GET"
+       })
+       .then(function(response) {
+           console.log(response);
+       });
+    </script>
+
   </body>
 </html>
