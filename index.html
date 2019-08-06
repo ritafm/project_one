@@ -1,26 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <title>Showing Pixel and Tile Coordinates</title>
-   <meta name="viewport" content=“initial-scale=1.0">
-   <meta charset="utf-8">
-
-   <!-- css -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
-   <!-- jQuery -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!-- js -->
    <script src="assets/javascript/main.js"></script>
-   <!-- Ajax -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!-- Google Maps -->
-   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap"></script>
-   <!-- Maps Call -->
-   <script src="assets/javascript/googleMapAPI.js"></script>
+   <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap">
+       </script>
+       
 </head>
 <body>
    <div id="map"></div>
+   <div id="tideTableDiv">
+      <table id="tideTable">
+        <thead>
+          <tr>
+            <th scope="col">Tides and Height</th>
+            <th scope="col">Sunday</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id=hi1>HI</td>
+          </tr>
+          <tr>
+            <td id=hiLevel1>LEVEL</td>
+          </tr>
+          <tr>
+            <td id=lo1>LO</td>
+          </tr>
+          <tr>
+            <td id=loLevel1>LEVEL</td>
+          </tr>
+          <tr>
+            <td id=hi2>HI</td>
+          </tr>
+          <tr>
+            <td id=hiLevel2>LEVEL</td>
+          </tr>
+          <tr>
+              <td id=lo2>LO</td>
+            </tr>
+          <tr>
+              <td id=loLevel2>LEVEL</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </body>
 </html>
 
