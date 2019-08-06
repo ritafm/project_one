@@ -2,28 +2,156 @@
 <html>
 
 <head>
+  <title>Showing Pixel and Tile Coordinates</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+  </script>
+</head>
+
+<body>
+
+  <script>
+    function initMap() {
+      var chicago = new google.maps.LatLng(41.850, -87.650);
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: chicago,
+        zoom: 3
+      });
+
+      var coordInfoWindow = new google.maps.InfoWindow();
+      coordInfoWindow.setContent(createInfoWindowContent(chicago, map.getZoom()));
+      coordInfoWindow.setPosition(chicago);
+      coordInfoWindow.open(map);
+
+      map.addListener('zoom_changed', function () {
+        coordInfoWindow.setContent(createInfoWindowContent(chicago, map.getZoom()));
+        coordInfoWindow.open(map);
+      });
+    }
+
+    var TILE_SIZE = 256;
+
+    function createInfoWindowContent(latLng, zoom) {
+      var scale = 1 << zoom;
+
+      var worldCoordinate = project(latLng);
+
+      var pixelCoordinate = new google.maps.Point(
+        Math.floor(worldCoordinate.x * scale),
+        Math.floor(worldCoordinate.y * scale));
+
+      var tileCoordinate = new google.maps.Point(
+        Math.floor(worldCoordinate.x * scale / TILE_SIZE),
+        Math.floor(worldCoordinate.y * scale / TILE_SIZE));
+
+      return [
+        'Chicago, IL',
+        'LatLng: ' + latLng,
+        'Zoom level: ' + zoom,
+        'World Coordinate: ' + worldCoordinate,
+        'Pixel Coordinate: ' + pixelCoordinate,
+        'Tile Coordinate: ' + tileCoordinate
+      ].join('<br>');
+    }
+
+    // The mapping between latitude, longitude and pixels is defined by the web
+    // mercator projection.
+    function project(latLng) {
+      var siny = Math.sin(latLng.lat() * Math.PI / 180);
+
+      // Truncating to 0.9999 effectively limits latitude to 89.189. This is
+      // about a third of a tile past the edge of the world tile.
+      siny = Math.min(Math.max(siny, -0.9999), 0.9999);
+
+      return new google.maps.Point(
+        TILE_SIZE * (0.5 + latLng.lng() / 360),
+        TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)));
+    }
+
+    var queryURL =
+      "https://www.worldtides.info/api?heights&lat=33.768321&lon=-118.195617&key=3829b936-6058-47fd-89e8-5853c311d142";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+      .then(function (response) {
+        console.log(response);
+      });
+  </script>
     <title>Showing Pixel and Tile Coordinates</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap">
-        </script>
-
-        
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap"></script>
+   
 </head>
 
 <body>
     <div id="map"></div>
-
-  
+    <div id="tideTableDiv">
+    <table id="tideTable">
+      <thead>
+        <tr>
+          <th scope="col">Tides and Height</th>
+          <th scope="col">Sunday</th>
+          <th scope="col">Monday</th>
+          <th scope="col">Tuesday</th>
+          <th scope="col">Wednesday</th>
+          <th scope="col">Thursday</th>
+          <th scope="col">Friday</th>
+          <th scope="col">Saturday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id=hi1>HI</td>
+        </tr>
+        <tr>
+          <td id=hiLevel1>LEVEL</td>
+        </tr>
+        <tr>
+          <td id=lo1>LO</td>
+        </tr>
+        <tr>
+          <td id=loLevel1>LEVEL</td>
+        </tr>
+        <tr>
+          <td id=hi2>HI</td>
+        </tr>
+        <tr>
+          <td id=hiLevel2>LEVEL</td>
+        </tr>
+        <tr>
+            <td id=lo2>LO</td>
+          </tr>
+        <tr>
+            <td id=loLevel2>LEVEL</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </body>
 
