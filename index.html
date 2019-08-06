@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Showing Pixel and Tile Coordinates</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <script src="assets/javascript/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap">
+        </script>
+
+        
+
+</head>
+
+<body>
+    <div id="map"></div>
+
+  
+
+</body>
+
+<script>
+  var lat = 0;
+     var long = 0;
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/34475c6411188dae8b22c2b2a5ba2f2a/"+lat +"," +long;
+     $.ajax({
+         url: queryURL,
+         method: "GET"
+     })
+     .then(function(response) {
+         console.log(response);
+     });
+  </script>
+
+  </body>
+</html>
