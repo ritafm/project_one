@@ -25,4 +25,18 @@
 
 </body>
 
+<script>
+  var lat = 0;
+     var long = 0;
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/34475c6411188dae8b22c2b2a5ba2f2a/"+lat +"," +long;
+     $.ajax({
+         url: queryURL,
+         method: "GET"
+     })
+     .then(function(response) {
+         console.log(response);
+     });
+  </script>
+
+  </body>
 </html>
