@@ -19,6 +19,7 @@
             };
 
             infoWindow.setPosition(pos);
+            console.log("works");
             infoWindow.setContent('Location found.');
             infoWindow.open(map);
             map.setCenter(pos);
