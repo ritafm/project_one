@@ -42,7 +42,13 @@
           var bounds = new google.maps.LatLngBounds();
           places.forEach(function(place) {
 
+            // gets the object
             console.log(place);
+            // gets the lat
+            console.log("lat:",place.geometry.location.lat());
+            // gets the lng
+            console.log("lng:",place.geometry.location.lng());
+            
             if (!place.geometry) {
               console.log("Returned place contains no geometry");
               return;
@@ -52,24 +58,23 @@
               size: new google.maps.Size(71, 71),
               origin: new google.maps.Point(0, 0),
               anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
+              scaledSize: new google.maps.Size(25, 25),
             };
-            
+          
             // Create a marker for each place.
             markers.push(new google.maps.Marker({
               map: map,
               icon: icon,
               title: place.name,
-              position: place.geometry.location 
+              position: place.geometry.location, 
             }));
-
-            
+           
 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
             } else {
-              bounds.extend(place.geometry.location);
+                bounds.extend(place.geometry.location);   
             }
          
           map.fitBounds(bounds);
