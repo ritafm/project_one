@@ -5,6 +5,7 @@
       var queryURL = "";
       var lat = 0;
       var lng = 0;
+      var Tides;
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.8688, lng: 151.2195},
@@ -71,8 +72,25 @@
                console.groupCollapsed("Location Tide Info");
                console.log(response.extremes);
                console.groupEnd();
+
+              
+            for(let i = 0; i < response.extremes.length; i++){
+               console.log(response.extremes[i].height);
+                Tides = [
+                    {
+                        "date": response.extremes.date,
+                        "low": response.extremes.type,
+                        "height": response.extremes.height
+                    },
+                    
+                    {
+                        "date": response.extremes.date,
+                        "high": response.extremes.type,
+                        "height": response.extremes.height
+                    }
+                ]
                
-                
+            }
             });
 
             if (!place.geometry) {
@@ -106,5 +124,47 @@
         });
     });
     }
-    
-    
+
+    function CreateTableFromJSON() { 
+     
+
+     // EXTRACT VALUE FOR HTML HEADER. 
+     // ('Book ID', 'Book Name', 'Category' and 'Price')
+     var col = [];
+     for (var i = 0; i < Tides.length; i++) {
+         for (var key in Tides[i]) {
+             if (col.indexOf(key) === -1) {
+                 col.push(key);
+             }
+         }
+     }
+
+     // CREATE DYNAMIC TABLE.
+     var table = document.createElement("table");
+
+     // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+     var tr = table.insertRow(-1);                   // TABLE ROW.
+
+     for (var i = 0; i < col.length; i++) {
+         var th = document.createElement("th");      // TABLE HEADER.
+         th.innerHTML = col[i];
+         tr.appendChild(th);
+     }
+
+     // ADD JSON DATA TO THE TABLE AS ROWS.
+     for (var i = 0; i < Tides.length; i++) {
+
+         tr = table.insertRow(-1);
+
+         for (var j = 0; j < col.length; j++) {
+             var tabCell = tr.insertCell(-1);
+             tabCell.innerHTML = Tides[i][col[j]];
+         }
+     }
+
+     // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+     var divContainer = document.getElementById("showData");
+     divContainer.innerHTML = "";
+     divContainer.appendChild(table);
+ }
