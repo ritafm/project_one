@@ -31,6 +31,8 @@
           });
           markers = [];
           
+
+
           // For each place, get the icon, name and location.
           var bounds = new google.maps.LatLngBounds();
           places.forEach(function(place) {
@@ -54,7 +56,7 @@
               title: place.name,
               position: place.geometry.location 
             }));
-            
+
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
