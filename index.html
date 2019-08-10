@@ -11,19 +11,60 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
    <script src="assets/javascript/main.js"></script>
-   <script async defer
-       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&callback=initMap">
-       </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initAutocomplete"
+       async defer></script>
+
    <script src="assets/javascript/googleMapAPI.js"></script>
        
 </head>
 <body>
-
+   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
    <div id="map"></div>
-   <div id = "test"></div>
 
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <div id="tideTableDiv">
+      <table id="tideTable">
+        <thead>
+          <tr>
+            <th scope="col">Tides and Height</th>
+            <th scope="col">Sunday</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id=hi1>HI</td>
+          </tr>
+          <tr>
+            <td id=hiLevel1>LEVEL</td>
+          </tr>
+          <tr>
+            <td id=lo1>LO</td>
+          </tr>
+          <tr>
+            <td id=loLevel1>LEVEL</td>
+          </tr>
+          <tr>
+            <td id=hi2>HI</td>
+          </tr>
+          <tr>
+            <td id=hiLevel2>LEVEL</td>
+          </tr>
+          <tr>
+              <td id=lo2>LO</td>
+            </tr>
+          <tr>
+              <td id=loLevel2>LEVEL</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </body>
 </html>
 

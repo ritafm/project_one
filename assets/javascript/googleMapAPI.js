@@ -1,170 +1,76 @@
-    // //  // Note: This example requires that you consent to location sharing when
-    // //   // prompted by your browser. If you see the error "The Geolocation service
-    // //   // failed.", it means you probably did not give permission for the browser to
-    // //   // locate you.
-    //   var map, infoWindow;
-    //   function initMap() {
-    //     map = new google.maps.Map(document.getElementById('map'), {
-    //       center: {lat: -34.397, lng: 150.644},
-    //       zoom: 6
-    //     });
-    //     infoWindow = new google.maps.InfoWindow;
+// This example adds a search box to a map, using the Google Place Autocomplete
+      // feature. People can enter geographical searches. The search box will return a
+      // pick list containing a mix of places and predicted search terms.
 
-    //     // Try HTML5 geolocation.
-    //     if (navigator.geolocation) {
-    //       navigator.geolocation.getCurrentPosition(function(position) {
-    //         var pos = {
-    //           lat: position.coords.latitude,
-    //           lng: position.coords.longitude
-    //         };
-
-    //         infoWindow.setPosition(pos);
-    //         console.log("works");
-    //         infoWindow.setContent('Location found.');
-    //         infoWindow.open(map);
-    //         map.setCenter(pos);
-    //       }, function() {
-    //         handleLocationError(true, infoWindow, map.getCenter());
-    //       });
-    //     } else {
-    //       // Browser doesn't support Geolocation
-    //       handleLocationError(false, infoWindow, map.getCenter());
-    //     }
-    //   }
-
-    //   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    //     infoWindow.setPosition(pos);
-    //     infoWindow.setContent(browserHasGeolocation ?
-    //                           'Error: The Geolocation service failed.' :
-    //                           'Error: Your browser doesn\'t support geolocation.');
-    //     infoWindow.open(map);
-    //   }
-
-// ********************************************************************************************************************
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
       
-      function initMap() {
-        infoWindow = new google.maps.InfoWindow;
-        var pos;
-        var map;
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-             pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
+      function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+        
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
             };
-            map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 10,
-              center: {lat: pos.lat, lng: pos.lng }
-            });
-          
-           
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-        
-        var bounds = {
-          north: pos.lat,
-          south: pos.lng,
-          east: pos.lat,
-          west: pos.lng
-        };
-      
-        // Display the area between the location southWest and northEast.
-        map.fitBounds(bounds);
-      
-        // Add 5 markers to map at random locations.
-        // For each of these markers, give them a title with their index, and when
-        // they are clicked they should open an infowindow with text from a secret
-        // message.
-        var secretMessages = ['This', 'is', 'the', 'secret', 'message'];
-        
-        for (var i = 0; i < secretMessages.length; i++) {
-          var marker = new google.maps.Marker({
-            position: {
-              lat: pos.lat * Math.random(),
-              lng: pos.lng * Math.random()
-            },
-            map: map
-          });
-          attachSecretMessage(marker, secretMessages[i]);
-        }
-      }
-      
-      // Attaches an info window to a marker with the provided message. When the
-      // marker is clicked, the info window will open with the secret message.
-      function attachSecretMessage(marker, secretMessage) {
-        var infowindow = new google.maps.InfoWindow({
-          content: secretMessage
+            
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location,
+              
+            }));
+
+            console.log(markers);
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+         
+          map.fitBounds(bounds);
         });
-      
-        marker.addListener('click', function() {
-          infowindow.open(marker.get('map'), marker);
-        });
+    });
       }
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        // infoWindow.open(map);
-      }
-      // ******************************************************************************************
-      // function initMap() {
-        
-      //   var map = new google.maps.Map(document.getElementById('map'), {
-      //     zoom: 4,
-      //     center: {lat: -25.363882, lng: 131.044922 }
-      //   });
-      
-      //   var bounds = {
-      //     north: -25.363882,
-      //     south: -31.203405,
-      //     east: 131.044922,
-      //     west: 125.244141
-      //   };
-      
-      //   // Display the area between the location southWest and northEast.
-      //   map.fitBounds(bounds);
-      
-      //   // Add 5 markers to map at random locations.
-      //   // For each of these markers, give them a title with their index, and when
-      //   // they are clicked they should open an infowindow with text from a secret
-      //   // message.
-      //   var secretMessages = ['This', 'is', 'the', 'secret', 'message'];
-      //   var lngSpan = bounds.east - bounds.west;
-      //   var latSpan = bounds.north - bounds.south;
-      //   for (var i = 0; i < 15; ++i) {
-      //     var marker = new google.maps.Marker({
-      //       position: {
-      //         lat: bounds.south + latSpan * Math.random(),
-      //         lng: bounds.west + lngSpan * Math.random()
-      //       },
-      //       map: map
-      //     });
-      //     attachSecretMessage(marker, secretMessages[i]);
-      //   }
-      // }
-      
-      // // Attaches an info window to a marker with the provided message. When the
-      // // marker is clicked, the info window will open with the secret message.
-      // function attachSecretMessage(marker, secretMessage) {
-      //   var infowindow = new google.maps.InfoWindow({
-      //     content: secretMessage
-      //   });
-      
-      //   marker.addListener('click', function() {
-      //     infowindow.open(marker.get('map'), marker);
-      //   });
-      // }
