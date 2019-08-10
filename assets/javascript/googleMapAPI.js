@@ -78,15 +78,15 @@
                console.log(response.extremes[i].height);
                 Tides = [
                     {
-                        "date": response.extremes.date,
-                        "low": response.extremes.type,
-                        "height": response.extremes.height
+                        "date": response.extremes[i].date,
+                        "low": response.extremes[i].type,
+                        "height": response.extremes[i].height
                     },
-                    
+
                     {
-                        "date": response.extremes.date,
-                        "high": response.extremes.type,
-                        "height": response.extremes.height
+                        "date": response.extremes[i].date,
+                        "high": response.extremes[i].type,
+                        "height": response.extremes[i].height
                     }
                 ]
                
@@ -127,7 +127,7 @@
 
     function CreateTableFromJSON() { 
      
-
+        console.log("Dito"+ JSON.stringify(Tides));
      // EXTRACT VALUE FOR HTML HEADER. 
      // ('Book ID', 'Book Name', 'Category' and 'Price')
      var col = [];
