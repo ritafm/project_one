@@ -8,8 +8,8 @@ $.ajax({
   .then(function (response) {
     console.log(response.extremes);
   });
+
+
+
  
-
-
-
-
+//Read the tide data, loop over it, and append the values to the table body.
