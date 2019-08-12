@@ -64,8 +64,11 @@
             })
             .then(function (response) {
 
-               
+               //day.format to get a string out of whatever
 
+               var day = moment(response.extremes.dt).format('MMMM Do YYYY, h:mm:ss a');
+              console.log(day);
+              
                console.groupCollapsed("Tides Location Name");
                console.log(name);
                console.groupEnd();
@@ -87,7 +90,31 @@
                         "date": response.extremes[i].date,
                         "high": response.extremes[i].type,
                         "height": response.extremes[i].height
-                    }
+                    },
+
+                    {
+                      "date": response.extremes[i].date,
+                      "low": response.extremes[i].type,
+                      "height": response.extremes[i].height
+                  },
+
+                  {
+                      "date": response.extremes[i].date,
+                      "high": response.extremes[i].type,
+                      "height": response.extremes[i].height
+                  },
+
+                  {
+                    "date": response.extremes[i].date,
+                    "low": response.extremes[i].type,
+                    "height": response.extremes[i].height
+                },
+
+                {
+                    "date": response.extremes[i].date,
+                    "high": response.extremes[i].type,
+                    "height": response.extremes[i].height
+                }
                 ]
                
             }
@@ -127,7 +154,7 @@
 
     function CreateTableFromJSON() { 
      
-        console.log("Dito"+ JSON.stringify(Tides));
+        console.log("CreateTableFromJSON"+ JSON.stringify(Tides));
      // EXTRACT VALUE FOR HTML HEADER. 
      // ('Book ID', 'Book Name', 'Category' and 'Price')
      var col = [];
