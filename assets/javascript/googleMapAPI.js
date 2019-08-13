@@ -79,26 +79,6 @@
 
               console.log("TESTING", formatedTime);
             }
-
-              
-              
-               
-
-            //    console.groupCollapsed("Tides Location Name");
-            //    console.log(name);
-            //    console.groupEnd();
-            //    console.groupCollapsed("Location Tide Info");
-            //    console.log(response.extremes);
-            //    console.groupEnd();
-          
-            // for(let i = 0 ; i < response.extremes.length; i++){
-            //     
-            //     console.log(Reflect.set(response.extremes,response.extremes[i].dt, moment.unix().format('MMMM Do YYYY hh:mm a')));
-               
-            //     // console.log(moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a'));
-                
-                
-            // }
             
            
             // console.log("SHOW"+JSON.stringify(place));
@@ -141,7 +121,6 @@
 
     function CreateTableFromJSON() { 
      
-        // console.log("Dito"+ JSON.stringify(Tides));
      // EXTRACT VALUE FOR HTML HEADER. 
      // ('Book ID', 'Book Name', 'Category' and 'Price')
      var col = [];
