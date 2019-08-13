@@ -5,7 +5,9 @@
       var queryURL = "";
       var lat = 0;
       var lng = 0;
-      var Tides;
+      var Tides = {};
+      var promise;
+      var day;
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.8688, lng: 151.2195},
@@ -41,19 +43,20 @@
           var bounds = new google.maps.LatLngBounds();
           places.forEach(function(place) {
 
-            console.log("Map Object Name: " + place.formatted_address);
-            console.groupCollapsed("Object");
-            console.log(place);
-            console.groupEnd();
-            console.groupCollapsed("Lat & Lng");
+            // console.log("Map Object Name: " + place.formatted_address);
+            // console.groupCollapsed("Object");
+            // console.log(place);
+            // console.groupEnd();
+            // console.groupCollapsed("Lat & Lng");
             // gets the lat
+
              lat = place.geometry.location.lat();
-            console.log("lat:",place.geometry.location.lat());
+            // console.log("lat:",place.geometry.location.lat());
             // gets the lng
              lng = place.geometry.location.lng();
-            console.log("lng:",place.geometry.location.lng());
+            // console.log("lng:",place.geometry.location.lng());
 
-            console.groupEnd();
+            // console.groupEnd();
             var name = place.formatted_address;
 
             queryURL = "https://www.worldtides.info/api?extremes&lat=" + lat + "&lon=" + lng + "&length=604800&key=3829b936-6058-47fd-89e8-5853c311d142";
@@ -65,59 +68,13 @@
             .then(function (response) {
 
                //day.format to get a string out of whatever
-
-               var day = moment(response.extremes.dt).format('MMMM Do YYYY, h:mm:ss a');
-              console.log(day);
-              
-               console.groupCollapsed("Tides Location Name");
-               console.log(name);
-               console.groupEnd();
-               console.groupCollapsed("Location Tide Info");
-               console.log(response.extremes);
-               console.groupEnd();
-
-              
-            for(let i = 0; i < response.extremes.length; i++){
-               console.log(response.extremes[i].height);
-                Tides = [
-                    {
-                        "date": response.extremes[i].date,
-                        "low": response.extremes[i].type,
-                        "height": response.extremes[i].height
-                    },
-
-                    {
-                        "date": response.extremes[i].date,
-                        "high": response.extremes[i].type,
-                        "height": response.extremes[i].height
-                    },
-
-                    {
-                      "date": response.extremes[i].date,
-                      "low": response.extremes[i].type,
-                      "height": response.extremes[i].height
-                  },
-
-                  {
-                      "date": response.extremes[i].date,
-                      "high": response.extremes[i].type,
-                      "height": response.extremes[i].height
-                  },
-
-                  {
-                    "date": response.extremes[i].date,
-                    "low": response.extremes[i].type,
-                    "height": response.extremes[i].height
-                },
-
-                {
-                    "date": response.extremes[i].date,
-                    "high": response.extremes[i].type,
-                    "height": response.extremes[i].height
-                }
-                ]
-               
             }
+            
+           
+            // console.log("SHOW"+JSON.stringify(place));
+            Tides = response.extremes;
+           
+    
             });
 
             if (!place.geometry) {
@@ -154,14 +111,18 @@
 
     function CreateTableFromJSON() { 
      
-        console.log("CreateTableFromJSON"+ JSON.stringify(Tides));
      // EXTRACT VALUE FOR HTML HEADER. 
      // ('Book ID', 'Book Name', 'Category' and 'Price')
      var col = [];
+     
      for (var i = 0; i < Tides.length; i++) {
          for (var key in Tides[i]) {
              if (col.indexOf(key) === -1) {
                  col.push(key);
+                 
+                //  console.log(day);
+                
+                 
              }
          }
      }
@@ -187,6 +148,7 @@
          for (var j = 0; j < col.length; j++) {
              var tabCell = tr.insertCell(-1);
              tabCell.innerHTML = Tides[i][col[j]];
+            
          }
      }
 
@@ -194,4 +156,5 @@
      var divContainer = document.getElementById("showData");
      divContainer.innerHTML = "";
      divContainer.appendChild(table);
+     
  }
