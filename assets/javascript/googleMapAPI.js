@@ -67,21 +67,7 @@
             })
             .then(function (response) {
 
-               
-
-            //    console.groupCollapsed("Tides Location Name");
-            //    console.log(name);
-            //    console.groupEnd();
-            //    console.groupCollapsed("Location Tide Info");
-            //    console.log(response.extremes);
-            //    console.groupEnd();
-          
-            for(let i = 0 ; i < response.extremes.length; i++){
-                delete response.extremes[i].date;
-                console.log(Reflect.set(Tides, i, moment.unix().format('MMMM Do YYYY hh:mm a')));
-                // console.log(moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a'));
-                 
-                
+               //day.format to get a string out of whatever
             }
             
            
@@ -125,7 +111,6 @@
 
     function CreateTableFromJSON() { 
      
-        // console.log("Dito"+ JSON.stringify(Tides));
      // EXTRACT VALUE FOR HTML HEADER. 
      // ('Book ID', 'Book Name', 'Category' and 'Price')
      var col = [];
