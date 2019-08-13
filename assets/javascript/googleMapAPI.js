@@ -66,7 +66,22 @@
             method: "GET"
             })
             .then(function (response) {
+            
+            for (let i = 0; i < response.extremes.length; i++) {
 
+            delete response.extremes[i].date;
+
+              
+
+              var formatedTime = moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a');
+
+              response.extremes[i].dt = formatedTime;
+
+              console.log("TESTING", formatedTime);
+            }
+
+              
+              
                
 
             //    console.groupCollapsed("Tides Location Name");
@@ -76,19 +91,20 @@
             //    console.log(response.extremes);
             //    console.groupEnd();
           
-            for(let i = 0 ; i < response.extremes.length; i++){
-                delete response.extremes[i].date;
-                console.log(Reflect.set(Tides, i, moment.unix().format('MMMM Do YYYY hh:mm a')));
-                // console.log(moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a'));
-                 
+            // for(let i = 0 ; i < response.extremes.length; i++){
+            //     
+            //     console.log(Reflect.set(response.extremes,response.extremes[i].dt, moment.unix().format('MMMM Do YYYY hh:mm a')));
+               
+            //     // console.log(moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a'));
                 
-            }
+                
+            // }
             
            
             // console.log("SHOW"+JSON.stringify(place));
             Tides = response.extremes;
            
-    
+           
             });
 
             if (!place.geometry) {
@@ -163,6 +179,7 @@
          for (var j = 0; j < col.length; j++) {
              var tabCell = tr.insertCell(-1);
              tabCell.innerHTML = Tides[i][col[j]];
+           
             
          }
      }
