@@ -66,15 +66,25 @@
             method: "GET"
             })
             .then(function (response) {
+            
+            for (let i = 0; i < response.extremes.length; i++) {
 
-               //day.format to get a string out of whatever
+            delete response.extremes[i].date;
+
+              
+
+              var formatedTime = moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a');
+
+              response.extremes[i].dt = formatedTime;
+
+              console.log("TESTING", formatedTime);
             }
             
            
             // console.log("SHOW"+JSON.stringify(place));
             Tides = response.extremes;
            
-    
+           
             });
 
             if (!place.geometry) {
@@ -148,6 +158,7 @@
          for (var j = 0; j < col.length; j++) {
              var tabCell = tr.insertCell(-1);
              tabCell.innerHTML = Tides[i][col[j]];
+           
             
          }
      }
