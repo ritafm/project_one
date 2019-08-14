@@ -13,7 +13,8 @@
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
    <script src="assets/javascript/main.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <!-- Material icons -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initAutocomplete"
       async defer></script>
@@ -25,14 +26,52 @@
 </head>
 
 <body>
+      <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+              <a id="logo-container" href="#" class="brand-logo">Clam</a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="#">Link?</a></li>
+              </ul>
+        
+              <ul id="nav-mobile" class="sidenav">
+                <li><a href="#">Navbar Link</a></li>
+              </ul>
+              <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+          </nav>
+        
+          <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+              <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-2">HiLowKeepClam</h1>
+                <div class="row center">
+                  <h5 class="header col s12 light">Tides and Weather for Shellfish Enthusiast</h5>
+                </div>
+         
+                <br><br>
+        
+              </div>
+            </div>
+            <div class="parallax"><img src="assets/images/pacific-beach.jpg" alt="beach wide"></div>
+          </div>
+        
+        
+          <div class="container">
+            
+            <div class="section">
+        
+              <!--   Weather Section   -->
+           
+                    <div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
 
-      <div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
+                </div>
+        
 
    <input type="button" onclick="CreateTableFromJSON()" value="Create Table From JSON" />
    <p id="showData"></p>
 
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-   <div id="map"></div>
+  
 
 
 
