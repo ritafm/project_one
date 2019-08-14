@@ -219,8 +219,9 @@
      var divContainer = document.getElementById("showData");
      divContainer.innerHTML = "";
      divContainer.appendChild(table);
-
-           
+     
+ }
+   
     });
 });
 if (!place.geometry) {
@@ -256,7 +257,4 @@ map.fitBounds(bounds);
 });
 });
 }
-
-   
-
 

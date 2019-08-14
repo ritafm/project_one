@@ -6,16 +6,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Document</title>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!--Import materialize.css-->
-   <!-- Compiled and minified CSS -->
+   <!--Import materialize cdn-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <!--relative file links -->
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-   <script src="assets/javascript/main.js"></script>
+   <!-- jquery cdn -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
+
+   <!-- google maps API -->  
        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
        async defer></script>
+
    <script src="assets/javascript/googleMapAPI.js"></script>
 
    <!-- Moment.js Reference -->
@@ -26,15 +28,65 @@
   
   <p id="showData"></p>
 
-      <div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
+   <div style="width: 650px;"><iframe style="display: block;"
+         src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0"
+         scrolling="no"></iframe><a
+         style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right"
+         href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle
+         WA forecast</a></div>
 
    
    <p id="showData"></p>
 
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-   <div id="map"></div>
+   <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+         <ul class="right hide-on-med-and-down">
+            <li><a href="#">Navbar Link</a></li>
+         </ul>
 
+         <ul id="nav-mobile" class="sidenav">
+            <li><a href="#">Navbar Link</a></li>
+         </ul>
+         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+   </nav>
+   <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+         <br><br>
+         <h1 class="header center orange-text">Calling All Clammers!</h1>
+         <div class="row center">
+            <h5 class="header col s12 light">You know there's nothing quite like standing on the beach with a shucking
+               knife in one hand, a glove on the other, and a bottle of minerally white wine at your feet. You want to
+               get out there, but you want the tides and the weather to be on your side. This app will get you there. Search for
+               your beach to begin.</h5>
+         </div>
+         <div class="col s12 m6 l5 map-container">
+            <div class="col s12 card-panel map-container" id="google-maps">
+               <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+               <div class="col s12 card-panel map-container" id="map"></div>
+            </div>
+         </div>
 
+         <div class="row center">
+            <a href="http://materializecss.com/getting-started.html" id="download-button"
+               class="btn-large waves-effect waves-light orange">Get Started</a>
+         </div>
+         <br><br>
+
+      </div>
+   </div>
+   <footer class="page-footer orange">
+      <div class="container">
+
+      </div>
+      <div class="footer-copyright">
+         <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+         </div>
+      </div>
+   </footer>
+   <!--  Scripts-->
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </body>
 
 </html>
