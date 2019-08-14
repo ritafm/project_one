@@ -14,10 +14,11 @@
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
    <!-- jquery cdn -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!-- google maps API -->
-   <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initAutocomplete"
-      async defer></script>
+
+   <!-- google maps API -->  
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
+       async defer></script>
+
    <script src="assets/javascript/googleMapAPI.js"></script>
 
    <!-- Moment.js Reference -->
@@ -29,6 +30,22 @@
 </head>
 
 <body>
+   <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">WeatherWave</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="https://wdfw.wa.gov/fishing/shellfishing-regulations">Washington Shellfish Regulations</a></li>
+          <li><a href="https://wdfw.wa.gov/licenses/fishing/types-fees">Washington Shellfish Licenses</a></li>
+          <li><a href="https://fortress.wa.gov/doh/biotoxin/biotoxin.html">Biotoxin Closures</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+<div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
+
+  
+  <p id="showData"></p>
 
    <div style="width: 650px;"><iframe style="display: block;"
          src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0"
@@ -37,7 +54,7 @@
          href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle
          WA forecast</a></div>
 
-   <input type="button" onclick="CreateTableFromJSON()" value="Create Table From JSON" />
+
    <p id="showData"></p>
 
    <nav class="light-blue lighten-1" role="navigation">
