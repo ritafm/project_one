@@ -256,3 +256,4 @@ map.fitBounds(bounds);
 });
 });
 }
+
