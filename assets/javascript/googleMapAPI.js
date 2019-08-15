@@ -76,14 +76,14 @@
             method: "GET"
             })
             .then(function (response) {
-
+                console.log(response);
             for (let i = 0; i < response.extremes.length; i++) {
 
             delete response.extremes[i].date;
 
 
 
-            var formatedTime = moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a');
+            var formatedTime = moment.unix(response.extremes[i].dt).format('MMMM Do - hh:mm a');
 
             response.extremes[i].dt = formatedTime;
 
@@ -109,6 +109,7 @@
 
      // CREATE DYNAMIC TABLE.
      var table = document.createElement("table");
+     table.classList.add("striped");
 
      // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
@@ -169,11 +170,12 @@
             method: "GET"
             })
             .then(function (response) {
+                console.log(response);
                 for (let i = 0; i < response.extremes.length; i++) {
 
                     delete response.extremes[i].date;
                       
-                    var formatedTime = moment.unix(response.extremes[i].dt).format('MMMM Do YYYY hh:mm a');
+                    var formatedTime = moment.unix(response.extremes[i].dt).format('MMMM Do hh:mm a');
                     response.extremes[i].dt = formatedTime;
                    
                     }
@@ -194,6 +196,15 @@
              }
          }
      }
+
+    //  function dataTabs (){
+    //     for (let i = 0; i < array.length; i++) {
+    //         const element = array[i];
+            
+    //     }
+    //  }
+
+    
 
      // CREATE DYNAMIC TABLE.
      var table = document.createElement("table");
