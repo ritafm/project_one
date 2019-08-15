@@ -1,6 +1,12 @@
 /// This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
       // pick list containing a mix of places and predicted search terms.
+
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
+
+
       var queryURL = "";
       var lat = 0;
       var lng = 0;
@@ -222,7 +228,7 @@
      
  }
    
-    });
+                )});
 });
 if (!place.geometry) {
     console.log("Returned place contains no geometry");
@@ -255,6 +261,5 @@ if (!place.geometry) {
 
 map.fitBounds(bounds);
 });
-});
-}
 
+}
