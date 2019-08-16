@@ -40,7 +40,13 @@
             <li><a href="https://fortress.wa.gov/doh/biotoxin/biotoxin.html">Biotoxin Closures</a></li>
          </ul>
       </div>
-   </nav>
+
+    </nav>
+
+
+<div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
+  
+
 
    <div style="width: 650px;"><iframe style="display: block;"
          src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0"
@@ -70,6 +76,31 @@
 
 
 
+         <ul id="nav-mobile" class="sidenav">
+            <li><a href="#">Navbar Link</a></li>
+         </ul>
+         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+   </nav>
+
+   <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+         <br><br>
+         <h1 class="header center" id="header">Going Shellfishing?</h1>
+         <div class="row center">
+            <h5 class="header col s12 light" id="description">You know there's nothing quite like standing on the beach,
+               shovel in hand. You want to get out there, but you want the tides and the weather to be on your side.
+               This app will get you there.
+               Search for your beach to begin.</h5>
+         </div>
+         <div class="col s12 m6 l5 map-container">
+            <div class="col s12 card-panel map-container" id="google-maps">
+               <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+               <div class="col s12 card-panel map-container" id="map"></div>
+            </div>
+         </div>
+
+
 
    <!-- Modal Structure -->
    <div id="modal1" class="modal modal-fixed-footer">
@@ -88,32 +119,28 @@
    <footer class="page-footer orange">
       <div class="container">
 
-   <div class="container">
-      <br><br>
-      <h1 class="header center" id="header">Going Shellfishing?</h1>
-      <!-- <div class="row center"> -->
-         <h5 class="header col s4 light" id="description">You know there's nothing quite like standing on the beach,
-            shovel in hand. You want to get out there, but you want the tides and the weather to be on your side.
-            This app will get you there.
-            Search for your beach to begin.</h5>
-      <!-- </div> -->
 
-      <div class="row center" id="map" style="width:500px;height:380px;">
-      </div>
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Disclaimer</h5>
+            <p class="grey-text text-lighten-4">No guarantees as to the correctness of this data are made or implied. Do not rely on it to make decisions which can result in harm to anyone or anything.</p>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="white-text" href="https://www.doh.wa.gov/CommunityandEnvironment/Shellfish/RecreationalShellfish/IllnessPrevention/Identification"><u>Shellfish Identification</u></a></li>
+              <li><a class="white-text" href="http://www.pacshell.org/recreational-shellfish.asp"><u>Shellfish Resources</u></a></li>
+              <li><a class="white-text" href="https://www.oceanblueproject.org/cleanupevents.html"><u>Beach Cleanup Events</u></a></li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="row center">
-         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Search</a>
-      
-      <div class="footer-copyright">
-         <div class="container">
-            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-         </div>
 
       </div>
-      <br><br>
-   </div>
 
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+     
+    </footer>
 
    <!--  Scripts-->
    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
