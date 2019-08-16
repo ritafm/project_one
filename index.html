@@ -8,16 +8,17 @@
    <title>Document</title>
    <!--Import materialize cdn-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  
+
    <!--reset and style css -->
-   <link rel="reset" href="assets/css/style.css">
+   <link rel="reset" href="assets/css/reset.css">
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
    <!-- jquery cdn -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-   <!-- google maps API -->  
-       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
-       async defer></script>
+   <!-- google maps API -->
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
+      async defer></script>
 
    <script src="assets/javascript/googleMapAPI.js"></script>
 
@@ -32,20 +33,20 @@
 <body>
    <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">WeatherWave</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="https://wdfw.wa.gov/fishing/shellfishing-regulations">Washington Shellfish Regulations</a></li>
-          <li><a href="https://wdfw.wa.gov/licenses/fishing/types-fees">Washington Shellfish Licenses</a></li>
-          <li><a href="https://fortress.wa.gov/doh/biotoxin/biotoxin.html">Biotoxin Closures</a></li>
-        </ul>
+         <a href="#" class="brand-logo">WeatherWave</a>
+         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://wdfw.wa.gov/fishing/shellfishing-regulations">Washington Shellfish Regulations</a></li>
+            <li><a href="https://wdfw.wa.gov/licenses/fishing/types-fees">Washington Shellfish Licenses</a></li>
+            <li><a href="https://fortress.wa.gov/doh/biotoxin/biotoxin.html">Biotoxin Closures</a></li>
+         </ul>
       </div>
+
     </nav>
 
 
 <div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
   
 
-  
 
    <div style="width: 650px;"><iframe style="display: block;"
          src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0"
@@ -56,14 +57,16 @@
 
 
 
-
-  
-
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>Modal Header</h4>
-      <p id="showData"></p>
+      <!--  <p id="showData"></p> -->
+      <div id="modalTabsOuter" class="row">
+        <div class="col s12">
+          <ul id="modalTabsInner" class="tabs"></ul>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -71,11 +74,7 @@
   </div>
 
 
-   <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
-         </ul>
+
 
          <ul id="nav-mobile" class="sidenav">
             <li><a href="#">Navbar Link</a></li>
@@ -101,22 +100,25 @@
             </div>
          </div>
 
-         <div class="row center">
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Search</a>
-         </div>
-         <br><br>
 
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal modal-fixed-footer">
+      <div class="modal-content">
+         <h4>Modal Header</h4>
+         <p id="showData"></p>
+      </div>
+      <div class="modal-footer">
+         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
       </div>
    </div>
+
    <div class="row center" id="map" style="width:500px;height:380px;"></div>
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-   <div class="row center">
-      <a href="http://materializecss.com/getting-started.html" id="download-button"
-         class="btn-large waves-effect waves-light orange">Get Started</a>
-   </div>
+
    <br><br>
    <footer class="page-footer orange">
       <div class="container">
+
 
         <div class="row">
           <div class="col l6 s12">
@@ -139,6 +141,7 @@
 
      
     </footer>
+
    <!--  Scripts-->
    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
