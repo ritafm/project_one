@@ -6,12 +6,14 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Document</title>
+ 
    <!--Import materialize cdn-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+  
    <!--reset and style css -->
    <link rel="reset" href="assets/css/reset.css">
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+ 
    <!-- jquery cdn -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -19,11 +21,11 @@
    <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
       async defer></script>
-
    <script src="assets/javascript/googleMapAPI.js"></script>
 
    <!-- Moment.js Reference -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+ 
    <!-- google font-->
    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -49,27 +51,23 @@
          href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle
          WA forecast</a></div>
 
+   <div class="row center" id="map" style="width:500px;height:380px;"></div>
 
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <!--  <p id="showData"></p> -->
-      <div id="modalTabsOuter" class="row">
-        <div class="col s12">
-          <ul id="modalTabsInner" class="tabs"></ul>
-        </div>
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal modal-fixed-footer">
+      <div class="modal-content">
+         <h4>Modal Header</h4>
+         <!--  <p id="showData"></p> -->
+         <div id="modalTabsOuter" class="row">
+            <div class="col s12">
+               <ul id="modalTabsInner" class="tabs"></ul>
+            </div>
+         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
-
-
-
-
+      <div class="modal-footer">
+         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+   </div>
 
    <!-- Modal Structure -->
    <div id="modal1" class="modal modal-fixed-footer">
@@ -82,35 +80,16 @@
       </div>
    </div>
 
-   <div class="row center" id="map" style="width:500px;height:380px;"></div>
-
-   <br><br>
-   <footer class="page-footer orange">
-      <div class="container">
-
    <div class="container">
-      <br><br>
-      <h1 class="header center" id="header">Going Shellfishing?</h1>
-      <!-- <div class="row center"> -->
-         <h5 class="header col s4 light" id="description">You know there's nothing quite like standing on the beach,
-            shovel in hand. You want to get out there, but you want the tides and the weather to be on your side.
-            This app will get you there.
-            Search for your beach to begin.</h5>
-      <!-- </div> -->
+      <h1 class="header center col s12" id="header">Going Shellfishing?</h1>
+      <h5 class="header col s4 light" id="description">You know there's nothing quite like standing on the beach,
+         shovel in hand. You want to get out there, but you want the tides and the weather to be on your side.
+         This app will get you there.
+         Search for your beach to begin.</h5>
+   </div>
 
-      <div class="row center" id="map" style="width:500px;height:380px;">
-      </div>
-
-      <div class="row center">
-         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Search</a>
-      
-      <div class="footer-copyright">
-         <div class="container">
-            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-         </div>
-
-      </div>
-      <br><br>
+   <div class="row center">
+      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Search</a>
    </div>
 
    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
