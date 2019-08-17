@@ -23,7 +23,7 @@ var click;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 48.4897, lng: -122.6756},
-        zoom: 6
+        zoom: 9
     });
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -49,10 +49,11 @@ function initMap() {
         });
         markers = [];
 
+        
+
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
-
 
             var marker = new google.maps.Marker({
                 position: { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() },
@@ -62,8 +63,7 @@ function initMap() {
 
 
             var infowindow = new google.maps.InfoWindow({
-                // content: '<h1> lat: ' + place.geometry.location.lat() + 'lng: ' + place.geometry.location.lng() + '</h1>',
-                // zoom: 12
+                content: '<h5>'  + place.name + '</h5>',
 
             });
 
@@ -232,37 +232,21 @@ function initMap() {
 
                     )
             });
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+    
+            map.fitBounds(bounds);
         });
-        if (!place.geometry) {
-            console.log("Returned place contains no geometry");
-            return;
-        }
-        var icon = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25),
-        };
-
-
-        // // Create a marker for each place.
-        // markers.push(new google.maps.Marker({
-        //   map: map,
-        //   icon: icon,
-        //   title: place.name,
-        //   position: place.geometry.location, 
-        //   zoom: 6
-        // }));
-
-        if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-        } else {
-            bounds.extend(place.geometry.location);
-        }
-
-        map.fitBounds(bounds);
+      
+       
     });
 
-}
+};
