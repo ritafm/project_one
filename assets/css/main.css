@@ -111,3 +111,11 @@ html, body {
  background-color: #4CAF50;
  color: white;
 }
+
+#h4tide {
+text-align: center;
+}
+
+#weatherwidget {
+  margin: auto;
+}
