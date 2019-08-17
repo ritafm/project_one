@@ -5,36 +5,115 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!--Import materialize.css-->
-   <!-- Compiled and minified CSS -->
+   <title>Going Shellfishing?</title>
+
+   <!--Import materialize cdn-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+   <!--reset and style css -->
+   <link rel="reset" href="assets/css/reset.css">
    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-   <script src="assets/javascript/main.js"></script>
+
+   <!-- jquery cdn -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
-       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
-       async defer></script>
+
+   <!-- google maps API -->
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZzKUEKN_NHiHL8esT7pW6pcv1kLq-GMQ&libraries=places&callback=initMap"
+      async defer></script>
    <script src="assets/javascript/googleMapAPI.js"></script>
 
    <!-- Moment.js Reference -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
+   <!-- google font-->
+   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
 </head>
 
-  
-  <p id="showData"></p>
+<body>
+   <nav>
+      <div class="nav-wrapper">
+         <a href="#" class="brand-logo">WeatherWave</a>
+         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://wdfw.wa.gov/fishing/shellfishing-regulations" target="_blank">Washington Shellfish Regulations</a></li>
+            <li><a href="https://wdfw.wa.gov/licenses/fishing/types-fees" target="_blank">Washington Shellfish Licenses</a></li>
+            <li><a href="https://fortress.wa.gov/doh/biotoxin/biotoxin.html" target="_blank">Biotoxin Closures</a></li>
+         </ul>
+      </div>
+   </nav>
 
-      <div style="width: 650px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92" frameborder="0" scrolling="no"></iframe><a style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right" href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow">Puget Sound-Seattle WA forecast</a></div>
+   <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+         <h1 class="header center" id="header">Going Shellfishing?</h1>
+         <div class="row center">
+            <h5 class="header col s12 light" id="description">You know there's nothing quite like standing on the beach,
+               shovel in hand. You want to get out there, but you want the tides and the weather to be on your side.
+               This app will get you there.
+               Search for your beach to begin.</h5>
+         </div>
 
-   
-   <p id="showData"></p>
+         <!-- Modal Structure -->
+         <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+               <h4>Modal Header</h4>
+               <div style="width: 650px;"><iframe style="display: block;"
+                     src="https://cdnres.willyweather.com/widget/loadView.html?id=113640" width="650" height="92"
+                     frameborder="0" scrolling="no"></iframe><a
+                     style="height: 92px;position: relative;z-index: 1;width: 20px;margin: -92px 0 0 0;text-indent: -9999em;float: right"
+                     href="https://www.willyweather.com/wa/king-county/puget-sound--seattle.html" rel="nofollow" >Puget
+                     Sound-Seattle WA forecast</a></div>
+               <!--  <p id="showData"></p> -->
+               <div id="modalTabsOuter" class="row">
+                  <div class="col s12">
+                     <ul id="modalTabsInner" class="tabs"></ul>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+         </div>
+         <div class="row center">
+            <input class="row center" id="pac-input" class="controls" type="text" placeholder="Search Beach">
+         </div>
+         <div class="row center" id="map" style="width:500px;height:380px;"></div>
 
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-   <div id="map"></div>
+         <div class="row center">
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Tide Data</a>
+         </div>
 
 
+         <br><br>
+         <footer class="page-footer orange">
+            <div class="container">
+               <div class="row">
+                  <div class="col l6 s12">
+                     <h5 class="white-text">Disclaimer</h5>
+                     <p class="grey-text text-lighten-4">No guarantees as to the correctness of this data are made or
+                        implied. Do not rely on it to make decisions which can result in harm to anyone or anything.</p>
+                  </div>
+                  <div class="col l3 s12">
+                     <h5 class="white-text">Links</h5>
+                     <ul>
+                        <li><a class="white-text"
+                              href="https://www.doh.wa.gov/CommunityandEnvironment/Shellfish/RecreationalShellfish/IllnessPrevention/Identification" target="_blank"><u>Shellfish
+                                 Identification</u></a></li>
+                        <li><a class="white-text" href="http://www.pacshell.org/recreational-shellfish.asp" target="_blank"><u>Shellfish
+                                 Resources</u></a></li>
+                        <li><a class="white-text" href="https://www.oceanblueproject.org/cleanupevents.html" target="_blank"><u>Beach
+                                 Cleanup Events</u></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </footer>
+
+         <!--  Scripts-->
+         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
