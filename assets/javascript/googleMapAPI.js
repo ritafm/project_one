@@ -79,6 +79,7 @@ function initMap() {
                 .then(function (response) {
                     console.log(response);
 
+                    document.getElementById("modalTabsOuter").innerHTML = '<div class="col s12"><ul id="modalTabsInner" class="tabs"></ul></div>';
 
                     var days = {};
                     var day;
