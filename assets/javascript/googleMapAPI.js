@@ -4,11 +4,6 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
-$(document).ready(function () {
-    $('.tabs').tabs();
-});
-
-
 var queryURL = "";
 var lat = 0;
 var lng = 0;
@@ -77,7 +72,6 @@ function initMap() {
                 method: "GET"
             })
                 .then(function (response) {
-                    console.log(response);
 
                     document.getElementById("modalTabsOuter").innerHTML = '<div class="col s12"><ul id="modalTabsInner" class="tabs"></ul></div>';
 
@@ -96,14 +90,8 @@ function initMap() {
                         days[day].push(response.extremes[i]);
                     }
 
-                    console.log("THIS IS A TESTTTTTTTT");
-
-                    console.log("response:", response);
-                    console.log("days:", days);
-
                     var dayNum = 0;
                     for (var key in days) {
-                        console.log("Generating table for key", key);
                         var day_rows = days[key];
 
                         // populate the tab element for this day
@@ -121,9 +109,6 @@ function initMap() {
                         // get the column names for the table
                         var col = ["Date", "Tide Height (ft)", "Type"];
                         var col2 = ["dt", "height", "type"];
-
-                        console.log("col", col);
-                        console.log("day_rows", day_rows);
 
                         // fill out the actual table for this day
                         var tableContainer = document.createElement("div");
@@ -149,7 +134,6 @@ function initMap() {
 
                             for (var j = 0; j < col2.length; j++) {
                                 var tabCell = tr.insertCell(-1);
-                                console.log(day_rows, i, j, col2[j]);
                                 tabCell.innerHTML = day_rows[i][col2[j]];
                             }
                         }
@@ -161,81 +145,11 @@ function initMap() {
                         // increment our counter so we get unique IDs for each day
                         dayNum += 1;
                     }
+                    $('.tabs').tabs();
                 }
                 );
 
-
-            // // On click of marker display infoWindow
-            // marker.addListener("click", function () {
-            //     infowindow.open(map, marker);
-
-            //     console.log(place);
-            //     lat = place.geometry.location.lat();
-            //     lng = place.geometry.location.lng();
-            //     queryURL = "https://www.worldtides.info/api?extremes&lat=" + lat + "&lon=" + lng + "&length=604800&key=3829b936-6058-47fd-89e8-5853c311d142";
-
-
-
-            //     // // make if box is filled use that else use the clicked location
-            //     //  lat = place.geometry.location.lat();
-            //     // // console.log("lat:",place.geometry.location.lat());
-            //     // // gets the lng
-            //     //  lng = place.geometry.location.lng();
-            //     // // console.log("lng:",place.geometry.location.lng());
-
-            //     // console.groupEnd();
-            //     var name = place.formatted_address;
-
-
-
-            //     $.ajax({
-            //         url: queryURL,
-            //         method: "GET"
-            //     })
-            //         .then(function (response) {
-            //             console.log(response);
-
-            //             console.log("i guess we get here after all");
-
-
-
-            //             // CREATE DYNAMIC TABLE.
-            //             var table = document.createElement("table");
-
-            //             // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-            //             var tr = table.insertRow(-1);                   // TABLE ROW.
-
-            //             for (var i = 0; i < col.length; i++) {
-            //                 var th = document.createElement("th");      // TABLE HEADER.
-            //                 th.innerHTML = col[i];
-            //                 tr.appendChild(th);
-            //             }
-
-            //             // ADD JSON DATA TO THE TABLE AS ROWS.
-            //             for (var i = 0; i < Tides.length; i++) {
-
-            //                 tr = table.insertRow(-1);
-
-            //                 for (var j = 0; j < col.length; j++) {
-            //                     var tabCell = tr.insertCell(-1);
-            //                     tabCell.innerHTML = Tides[i][col[j]];
-
-
-            //                 }
-            //             }
-
-            //             // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-            //             var divContainer = document.getElementById("showData");
-            //             divContainer.innerHTML = "";
-            //             divContainer.appendChild(table);
-
-            //         }
-
-            //         )
-            // });
             if (!place.geometry) {
-                console.log("Returned place contains no geometry");
                 return;
             }
             if (place.geometry.viewport) {
