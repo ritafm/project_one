@@ -23,8 +23,7 @@ var click;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 48.4897, lng: -122.6756},
-        zoom: 8,
-        mapTypeId: 'roadmap'
+        zoom: 9
     });
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -48,23 +47,23 @@ function initMap() {
         markers.forEach(function (marker) {
             marker.setMap(null);
         });
-     
+        markers = [];
+
+        
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
 
-
             var marker = new google.maps.Marker({
                 position: { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() },
                 map: map,
-                
             });
-           
+            var srcWeather = 'https://www.theweather.com/wid_loader/' + place.place_id;
 
 
             var infowindow = new google.maps.InfoWindow({
-                content: '<h4>'+place.name+'</h4>'
+                content: '<h5>'  + place.name + '</h5>',
 
             });
 
@@ -243,10 +242,11 @@ function initMap() {
             } else {
                 bounds.extend(place.geometry.location);
             }
-            map.fitBounds(bounds);
-
-        });
-
-    });
     
-}
+            map.fitBounds(bounds);
+        });
+      
+       
+    });
+
+};
