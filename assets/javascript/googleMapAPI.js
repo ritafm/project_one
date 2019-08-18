@@ -62,6 +62,10 @@ function initMap() {
 
             });
 
+             // On click of marker display infoWindow
+             marker.addListener("click", function () {
+                infowindow.open(map, marker);
+
             lat = place.geometry.location.lat();
             lng = place.geometry.location.lng();
 
@@ -146,9 +150,11 @@ function initMap() {
                         dayNum += 1;
                     }
                     $('.tabs').tabs();
+                    
                 }
+                
                 );
-
+            })
             if (!place.geometry) {
                 return;
             }
