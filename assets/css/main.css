@@ -115,3 +115,7 @@ text-align: center;
 #weatherwidget {
   margin: auto;
 }
+
+.page-footer {
+  padding-bottom: 10px;
+}
