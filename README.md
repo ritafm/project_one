@@ -1,4 +1,4 @@
-# project_one
+# Tidentify
 
 Idea: We are building an application that pulls information on tides and weather at an indicated beach to determine if it is a good day to go enjoy the area.
 
